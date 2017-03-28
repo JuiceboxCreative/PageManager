@@ -71,7 +71,7 @@ class PageCrudController extends CrudController
     }
 
     // Overwrites the CrudController store() method to add template usage.
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
@@ -96,7 +96,7 @@ class PageCrudController extends CrudController
     }
 
     // Overwrites the CrudController update() method to add template usage.
-    public function update(UpdateRequest $request)
+    public function update(Request $request)
     {
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));

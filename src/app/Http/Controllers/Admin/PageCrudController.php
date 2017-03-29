@@ -3,10 +3,10 @@
 namespace Backpack\PageManager\app\Http\Controllers\Admin;
 
 use App\PageTemplates;
+use Request;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\PageManager\app\Http\Requests\PageRequest as StoreRequest;
-use Backpack\PageManager\app\Http\Requests\PageRequest as UpdateRequest;
+use Backpack\CRUD\app\Http\Requests\CrudRequest;
 
 class PageCrudController extends CrudController
 {
@@ -71,7 +71,7 @@ class PageCrudController extends CrudController
     }
 
     // Overwrites the CrudController store() method to add template usage.
-    public function store($request)
+    public function store(CrudRequest $request)
     {
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
@@ -96,7 +96,7 @@ class PageCrudController extends CrudController
     }
 
     // Overwrites the CrudController update() method to add template usage.
-    public function update($request)
+    public function update(CrudRequest $request)
     {
         $this->addDefaultPageFields(\Request::input('template'));
         $this->useTemplate(\Request::input('template'));
